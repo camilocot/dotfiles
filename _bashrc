@@ -37,8 +37,15 @@ export PAGER="/usr/bin/most -s"
 # disable suspend / resume feature
 stty -ixon
 
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/adt/sdk/platform-tools:$HOME/adt/eclipse
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-. ~/.bash_completion
-alias issh=~/projects/issh/issh;source ~/projects/issh/_lib/bash/completions.sh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+test -f ~/.bash_completion && source ~/.bash_completion
+
+alias issh=$HOME/projects/issh/issh;source $HOME/projects/issh/_lib/bash/completions.sh
 alias dates="TZ=Europe/Madrid date"
