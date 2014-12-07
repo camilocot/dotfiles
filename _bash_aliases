@@ -1,0 +1,62 @@
+alias l="ls -la"
+alias ls="ls -G"
+
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ll='ls -lF --color=auto'
+alias la='ls -alF --color=auto'
+alias ls='ls -F'
+ 
+# Make grep more user friendly by highlighting matches
+# and exclude grepping through .svn folders.
+alias grep='grep --color=auto --exclude-dir=\.svn --exclude-dir=\.git'
+
+alias gb="git branch"
+alias gba="git branch -a"
+alias gc="git commit -v"
+alias gd="git diff"
+alias gl="git pull --rebase"
+alias gp="git push"
+alias gst="git status -s"
+alias gcav="git commit -a -v"
+alias gcp="git cherry-pick"
+alias l='git log --pretty=oneline --abbrev-commit'
+alias log='git log -v'
+alias logg='git log --graph --abbrev-commit --date=relative'
+
+alias svnaddall='svn status | grep "^\?" | awk "{print \$2}" | xargs svn add'
+alias svnrmall='svn status | grep "^\!" | awk "{print \$2}" | xargs svn rm'
+
+function yank { \cat $1 | pbcopy; }
+
+function parse_git_dirty
+{
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
+
+function parse_git_branch
+{
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+function current_git_branch
+{
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
+}
+
+function pgrep() {
+    ps aux | grep $1 | grep -v grep
+}
+
+function pkill() {
+    local pid
+    pid=$(ps ax | grep $1 | grep -v grep | awk '{ print $1 }')
+    kill -9 $pid
+    echo -n "Killed $1 (process $pid)"
+}
+
+alias serve="python -m SimpleHTTPServer 8000"
+alias tmux="tmux -2"
+
+alias issh=$HOME/projects/issh/issh;source $HOME/projects/issh/_lib/bash/completions.sh
+alias dates="TZ=Europe/Madrid date"
+
