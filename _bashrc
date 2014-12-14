@@ -53,4 +53,10 @@ test -f ~/.bash_aliases && source ~/.bash_aliases
 if [[ ! -z $TMUX ]]; then 
     source ~/.tmux-git/tmux-git.sh
 fi
-export PS1='\[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
+
+
+export NVM_DIR="/home/ccota/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Run twolfson/sexy-bash-prompt
+. ~/.bash_prompt
