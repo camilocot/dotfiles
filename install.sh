@@ -8,14 +8,25 @@ containsElement () {
 
 git submodule update --init --recursive
 
+echo "Please enter your email: "
+read email
+
 copyFiles=("_gitconfig")
 for f in `find ./ -maxdepth 1 -name _\* -printf '%f\n'`;
 do
+    dest=${f/_/.}
+
     if containsElement $f $copyFiles; then
         command="cp"
     else
         command="ln -s"
     fi
-    echo $command `pwd`/$f ~/${f/_/.}
+
+    if [[ -f ~/$dest || -d ~/$dest ]]; then
+        mv ~/$dest ~/$dest.bak
+    fi
+    $command `pwd`/$f ~/$dest
+
 done
 
+sed -i "s/\(email =\).*/\1 ${email}/" ~/.gitconfig
