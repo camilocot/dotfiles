@@ -28,7 +28,9 @@ do
         mv ~/$dest ~/$dest.bak
     fi
     $command `pwd`/$f ~/$dest
-    sed -i "s/USERNAME/${username}/" ~/$dest 
+    if [[ -f ~/$dest ]]; then
+        sed -i "s/USERNAME/${username}/" ~/$dest 
+    fi
 
 done
 
