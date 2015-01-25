@@ -11,6 +11,8 @@ git submodule update --init --recursive
 echo "Please enter your email: "
 read email
 
+username=${1%@*}
+
 copyFiles=("_gitconfig")
 for f in `find ./ -maxdepth 1 -name _\* -printf '%f\n'`;
 do
@@ -26,6 +28,7 @@ do
         mv ~/$dest ~/$dest.bak
     fi
     $command `pwd`/$f ~/$dest
+    sed -i "s/USERNAME/${username}/" ~/$dest 
 
 done
 
