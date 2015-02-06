@@ -61,7 +61,9 @@ export NVM_DIR="~/.nvm"
 # Run twolfson/sexy-bash-prompt
 . ~/.bash_prompt
 
-export WORKON_HOME=~/Envs
-mkdir -p WORKON_HOME
-source /usr/bin/virtualenvwrapper.sh 
+if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
+    export WORKON_HOME=~/Envs
+    mkdir -p WORKON_HOME
+    source /usr/bin/virtualenvwrapper.sh 
+fi
 
