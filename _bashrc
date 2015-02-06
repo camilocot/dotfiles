@@ -59,7 +59,7 @@ export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Run twolfson/sexy-bash-prompt
-. ~/.bash_prompt
+test -f ~/.bash_prompt && source ~/.bash_prompt
 
 if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
     export WORKON_HOME=~/Envs
