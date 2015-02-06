@@ -45,5 +45,4 @@ function pkill() {
 alias serve="python -m SimpleHTTPServer 8000"
 alias tmux="tmux -2"
 
-alias issh=$HOME/projects/issh/issh;source $HOME/projects/issh/_lib/bash/completions.sh
 
