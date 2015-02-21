@@ -29,6 +29,12 @@ alias svnrmall='svn status | grep "^\!" | awk "{print \$2}" | xargs svn rm'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
+alias p='pushd'
+alias o='popd'
+
+alias serve="python -m SimpleHTTPServer 8000"
+alias tmux="tmux -2"
+
 function yank { \cat $1 | pbcopy; }
 
 function pgrep() {
@@ -42,8 +48,6 @@ function pkill() {
     echo -n "Killed $1 (process $pid)"
 }
 
-alias serve="python -m SimpleHTTPServer 8000"
-alias tmux="tmux -2"
 
 if [[ -d /opt/apache-maven-3.0.5 ]]; then
     alias mvn30='export M2_HOME=/opt/apache-maven-3.0.5'
@@ -52,5 +56,5 @@ if [[ -d /opt/apache-maven-3.1.1 ]]; then
     alias mvn31='export M2_HOME=/opt/apache-maven-3.1.1'
 fi
 if [[ -d /opt/apache-maven-3.2.5 ]]; then
-    alias mvn32='export M2_HOME=/opt/apache-maven-3.2.5'
+ t f  alias mvn3s2='export M2_HOME=/opt/apache-maven-3.2.5'
 fi
