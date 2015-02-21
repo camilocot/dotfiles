@@ -56,5 +56,5 @@ if [[ -d /opt/apache-maven-3.1.1 ]]; then
     alias mvn31='export M2_HOME=/opt/apache-maven-3.1.1'
 fi
 if [[ -d /opt/apache-maven-3.2.5 ]]; then
- t f  alias mvn3s2='export M2_HOME=/opt/apache-maven-3.2.5'
+    alias mvn3s2='export M2_HOME=/opt/apache-maven-3.2.5'
 fi
