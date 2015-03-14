@@ -50,7 +50,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 test -f ~/.bash_completion && source ~/.bash_completion
 test -f ~/.bash_aliases && source ~/.bash_aliases
 
-if [[ ! -z $TMUX ]]; then 
+if [[ ! -z $TMUX ]]; then
     source ~/.tmux-git/tmux-git.sh
 fi
 
@@ -64,7 +64,7 @@ test -f ~/.bash_prompt && source ~/.bash_prompt
 if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
     export WORKON_HOME=~/Envs
     mkdir -p WORKON_HOME
-    source /usr/bin/virtualenvwrapper.sh 
+    source /usr/bin/virtualenvwrapper.sh
 fi
 
 export EDITOR="vim"

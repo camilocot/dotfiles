@@ -96,15 +96,21 @@ installVirtualEnvWrapper() {
 USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 USER_GROUP=$(getent group $SUDO_USER | cut -d: -f3)
 
-echo "Please enter your email: "
-read email
+read -p "Please enter your email: " email
+username=${email%@*}
 
-username=${1%@*}
+
+
 
 
 installPackages
 launchGitInit
 copyLinkFiles
 subVars
-installMvn
+read -p "Do you want to install diferent version of maven? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    installMvn
+fi
+
 installVirtualEnvWrapper
