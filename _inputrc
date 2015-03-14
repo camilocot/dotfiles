@@ -1,4 +1,12 @@
+$if Bash
+    set match-hidden-files off
+    set match-hidden-files off
+    set show-all-if-ambiguous on
+    set completion-ignore-case on
+    set echo-control-characters off
+    # do history expansion when space entered
+    Space: magic-space
+$endif
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
-set show-all-if-ambiguous on
-set completion-ignore-case on
+set bell-style none
