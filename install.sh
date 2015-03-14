@@ -108,6 +108,7 @@ launchGitInit
 copyLinkFiles
 subVars
 read -p "Do you want to install diferent version of maven? " -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     installMvn
