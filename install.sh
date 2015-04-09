@@ -25,7 +25,7 @@ getPkgMng() {
 installPackages() {
  
     local os=$(lsb_release -si)
-    local pkgs=("tmux" "python" "most" "vim" "python-pip")
+    local pkgs=("tmux" "python" "most" "vim" "python-pip" "most")
     local pkgMgr=$(getPkgMng $os)
     for p in "${pkgs[@]}"
     do
@@ -118,4 +118,9 @@ then
     installMvn
 fi
 
-installVirtualEnvWrapper
+read -p "Do you want to install virtual env wrapper? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    installVirtualEnvWrapper
+fi
