@@ -7,8 +7,8 @@ containsElement () {
 }
 
 getPkgMng() {
-    case ${os,,} in
-        fedora)
+    case ${1,,} in
+        fedora|centos)
             pkgMgr="yum"
             ;;
         debian)
@@ -23,14 +23,18 @@ getPkgMng() {
 }
 
 installPackages() {
+ 
     local os=$(lsb_release -si)
     local pkgs=("tmux" "python" "most" "vim" "python-pip")
-    local pkgMgr=$(getPkgMng)
-
+    local pkgMgr=$(getPkgMng $os)
     for p in "${pkgs[@]}"
     do
         $pkgMgr install $p
     done
+}
+
+checkReqs() {
+    command -v lsb_release >/dev/null 2>&1 || { echo >&2 "I require lsb_release but it's not installed.  Aborting."; exit 1; }
 }
 
 installMvn() {
@@ -102,7 +106,7 @@ username=${email%@*}
 
 
 
-
+checkReqs
 installPackages
 launchGitInit
 copyLinkFiles
