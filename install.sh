@@ -25,7 +25,7 @@ getPkgMng() {
 installPackages() {
  
     local os=$(lsb_release -si)
-    local pkgs=("tmux" "python" "most" "vim" "python-pip" "most" "ipython")
+    local pkgs=("tmux" "python" "most" "vim" "python-pip" "most" "ipython" "jq")
     local pkgMgr=$(getPkgMng $os)
     for p in "${pkgs[@]}"
     do
