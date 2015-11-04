@@ -1,0 +1,15 @@
+# Mac OS X
+*.DS_Store
+
+# Generated files
+*.[oa]
+*.pyc
+
+# Backup files
+*~.nib
+
+# Java
+**/target
+**/.settings
+**/.project
+**/.classpath
