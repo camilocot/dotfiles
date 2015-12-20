@@ -93,8 +93,10 @@ fi
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias yum='dnf'
-
+alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bin:${PATH#/usr/java/jdk*:}'
+alias java7=java7u79
 alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
+alias vimconfig='vim ~/.vimrc'
 # Add / when autocomplete directories with Tab
 zstyle ':completion:*' special-dirs true
 
