@@ -103,3 +103,9 @@ zstyle ':completion:*' special-dirs true
 
 export NVM_DIR="/home/ccota/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Prevent ZSH to print an error when no match can be found.
+unsetopt nomatch
+# activate envirius
+[ -f "~/.envirius/nv" ] && . ~/.envirius/nv
+
+DEFAULT_USER=$USER
