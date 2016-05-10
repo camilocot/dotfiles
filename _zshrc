@@ -97,6 +97,7 @@ alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bi
 alias java7=java7u79
 alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
 alias vimconfig='vim ~/.vimrc'
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # Add / when autocomplete directories with Tab
 zstyle ':completion:*' special-dirs true
 
