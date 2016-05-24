@@ -126,3 +126,5 @@ unsetopt nomatch
 [ -f "~/.envirius/nv" ] && . ~/.envirius/nv
 
 DEFAULT_USER=$USER
+export GGHOME=$HOME/projects/go-workdir
+
