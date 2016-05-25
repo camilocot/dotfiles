@@ -68,5 +68,5 @@ if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
 fi
 
 export EDITOR="vim"
-export GGHOME=$HOME/projects/go-workdir
+export GOPATH=$HOME/projects/go-workdir
 
