@@ -69,4 +69,5 @@ fi
 
 export EDITOR="vim"
 export GOPATH=$HOME/projects/go-workdir
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
