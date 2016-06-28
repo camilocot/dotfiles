@@ -13,3 +13,7 @@
 **/.settings
 **/.project
 **/.classpath
+**/.idea
+
+# Node
+**/node_modules

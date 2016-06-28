@@ -127,3 +127,6 @@ unsetopt nomatch
 [ -f "~/.envirius/nv" ] && . ~/.envirius/nv
 
 DEFAULT_USER=$USER
+export GOPATH=$HOME/projects/go-workdir
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
