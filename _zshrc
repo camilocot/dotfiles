@@ -97,6 +97,7 @@ alias yum='dnf'
 alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bin:${PATH#/usr/java/jdk*:}'
 alias java7=java7u79
 alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
+alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
 alias vimconfig='vim ~/.vimrc'
 alias startwin='nohup VBoxManage startvm Windows7 &> /tmp/nohup.out&'
 alias startsynergy='nohup synergyc -f dook &> /tmp/nohup.out&'
