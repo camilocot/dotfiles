@@ -50,10 +50,11 @@ plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-
 # User configuration
 
 # User specific environment and startup programs
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 PATH=$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
 # Ruby version manager
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -76,9 +77,9 @@ export EDITOR='vim'
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Tmux customization
-if [[ ! -z $TMUX ]]; then
-    source ~/.tmux-git/tmux-git.sh
-fi
+#if [[ ! -z $TMUX ]]; then
+    #source ~/.tmux-git/tmux-git.sh
+#fi
 
 if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
     export WORKON_HOME=~/Envs
@@ -97,13 +98,15 @@ alias yum='dnf'
 alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bin:${PATH#/usr/java/jdk*:}'
 alias java7=java7u79
 alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
-alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
+alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf' 
 alias vimconfig='vim ~/.vimrc'
+alias tmuxconfig='vim ~/.tmux.conf'
 alias startwin='nohup VBoxManage startvm Windows7 &> /tmp/nohup.out&'
 alias startsynergy='nohup synergyc -f dook &> /tmp/nohup.out&'
 alias piporig='mv  ~/.pydistutils.cfg ~/.pydistutils.cfg.mit'
 alias pipmit='mv  ~/.pydistutils.cfg.mit ~/.pydistutils.cfg'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias emacs="emacs -nw"
 
 # Dev Helpers functions
 karma_debug () {
@@ -128,5 +131,8 @@ unsetopt nomatch
 
 DEFAULT_USER=$USER
 export GOPATH=$HOME/projects/go-workdir
+
+export VAGRANT_VAGRANTFILE=Vagrantfile
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
