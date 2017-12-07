@@ -13,7 +13,21 @@
 **/.settings
 **/.project
 **/.classpath
+
+# Jetbrains
 **/.idea
+*.iml
 
 # Node
 **/node_modules
+
+# VS Code
+**/.vscode
+**/github.com
+
+# Vagrant
+**/.vagrant
+
+**/.mvn
+*.retry
+
