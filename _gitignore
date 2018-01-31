@@ -8,11 +8,12 @@
 # Backup files
 *~.nib
 
-# Java
+# Java / Mvn
 **/target
 **/.settings
 **/.project
 **/.classpath
+**/.mvn
 
 # Jetbrains
 **/.idea
@@ -24,10 +25,19 @@
 # VS Code
 **/.vscode
 **/github.com
+.editorconfig
 
 # Vagrant
 **/.vagrant
 
-**/.mvn
+# Ansible
 *.retry
 
+# nodejs / npm
+npm-debug.log
+site/src/test/
+site/src/main/javascript/site/modules/content/mapper/
+**/yarn.lock
+
+# nvim
+.netrwhist
