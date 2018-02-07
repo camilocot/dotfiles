@@ -65,9 +65,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR='nvim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='mnvim'
 # fi
 
 # Compilation flags
@@ -92,15 +92,15 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias yum='dnf'
 alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bin:${PATH#/usr/java/jdk*:}'
 alias java7=java7u79
 alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
-alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf' 
-alias vimconfig='vim ~/.vimrc'
-alias tmuxconfig='vim ~/.tmux.conf'
+alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
+alias nvimconfig='vim ~/.vimrc'
+alias tmuxconfig='nvim ~/.tmux.conf'
 alias startwin='nohup VBoxManage startvm Windows7 &> /tmp/nohup.out&'
 alias startsynergy='nohup synergyc -f dook &> /tmp/nohup.out&'
 alias piporig='mv  ~/.pydistutils.cfg ~/.pydistutils.cfg.mit'
@@ -130,9 +130,17 @@ unsetopt nomatch
 [ -f "~/.envirius/nv" ] && . ~/.envirius/nv
 
 DEFAULT_USER=$USER
+# Golang variables
 export GOPATH=$HOME/projects/go-workdir
+export PATH="$PATH:$GOPATH/bin"
+export GOROOT=/usr/local/go
 
 export VAGRANT_VAGRANTFILE=Vagrantfile
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 export PATH="$PATH:$HOME/.rvm/bin:$GOPATH/bin"
+
+[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS="--inline-info -m --height 40% --border"
+
