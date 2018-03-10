@@ -1,153 +1,102 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/ccota/.oh-my-zsh
 
-# Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="avit"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Enable command auto-correction.
+ENABLE_CORRECTION="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang)
-
-# User configuration
-
-# User specific environment and startup programs
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-PATH=$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
-# Ruby version manager
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='nvim'
-# else
-#   export EDITOR='mnvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Tmux customization
-#if [[ ! -z $TMUX ]]; then
-    #source ~/.tmux-git/tmux-git.sh
-#fi
-
-if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
-    export WORKON_HOME=~/Envs
-    mkdir -p $WORKON_HOME
-    source /usr/bin/virtualenvwrapper.sh
-fi
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias yum='dnf'
-alias java7u79='export JAVA_HOME=/usr/java/jdk1.7.0_79;export PATH=$JAVA_HOME/bin:${PATH#/usr/java/jdk*:}'
-alias java7=java7u79
-alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
-alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
-alias nvimconfig='vim ~/.vimrc'
-alias tmuxconfig='nvim ~/.tmux.conf'
-alias startwin='nohup VBoxManage startvm Windows7 &> /tmp/nohup.out&'
-alias startsynergy='nohup synergyc -f dook &> /tmp/nohup.out&'
-alias piporig='mv  ~/.pydistutils.cfg ~/.pydistutils.cfg.mit'
-alias pipmit='mv  ~/.pydistutils.cfg.mit ~/.pydistutils.cfg'
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias emacs="emacs -nw"
-
-# Dev Helpers functions
-karma_debug () {
-	karma start $1 --browsers=Chrome --single-run=false --debug
-}
-alias karmadebug=karma_debug
-mvn_test_smoke_debug () {
-	mvn -Dmaven.surefire.debug integration-test -Pautomation,smoke -Dspring.profiles.active=DEFAULT_USER -Dtest=$1
-}
-alias mvntestsmokedebug=mvn_test_smoke_debug
-
-# Add / when autocomplete directories with Tab
-zstyle ':completion:*' special-dirs true
-
-export NVM_DIR="/home/ccota/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Prevent ZSH to print an error when no match can be found.
-unsetopt nomatch
-# activate envirius
-[ -f "~/.envirius/nv" ] && . ~/.envirius/nv
-
-DEFAULT_USER=$USER
-# Golang variables
-export GOPATH=$HOME/projects/go-workdir
-export PATH="$PATH:$GOPATH/bin"
-export GOROOT=/usr/local/go
-
-export VAGRANT_VAGRANTFILE=Vagrantfile
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
-
-export PATH="$PATH:$HOME/.rvm/bin:$GOPATH/bin"
-
-[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
-
-export FZF_DEFAULT_OPTS="--inline-info -m --height 40% --border"
-
-# List all the commands to not be corrected in ~/.zsh_nocorrect, 1 per line.
 if [ -f ~/.zsh_nocorrect ]; then
     while read -r COMMAND; do
         alias $COMMAND="nocorrect $COMMAND"
     done < ~/.zsh_nocorrect
 fi
 
+# Display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Add / when autocomplete directories with Tab
+zstyle ':completion:*' special-dirs true
+
+# Prevent ZSH to print an error when no match can be found.
+unsetopt nomatch
+
+source $ZSH/oh-my-zsh.sh
+
+# Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
+plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang)
+
+# Path
+PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
+
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
+
+# Custom aliases
+alias vim='nvim'
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias yum='dnf'
+alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
+alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
+alias vimconfig='nvim ~/.vimrc'
+alias nvimconfig='nvim ~/.config/nvim/init.vim'
+alias tmuxconfig='nvim ~/.tmux.conf'
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias tcpdumpall="sudo tcpdump -nnASs 0"
+
+# Dev Helpers functions
+karma_debug () {
+	karma start $1 --browsers=Chrome --single-run=false --debug
+}
+alias karmadebug=karma_debug
+
+mvn_test_smoke_debug () {
+	mvn -Dmaven.surefire.debug integration-test -Pautomation,smoke -Dspring.profiles.active=DEFAULT_USER -Dtest=$1
+}
+alias mvntestsmokedebug=mvn_test_smoke_debug
+
+# NVM environment
+export NVM_DIR="/home/ccota/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Ruby version manager
+[ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin"
+
+# VirtualEnv configuration
+if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
+    export WORKON_HOME=~/Envs
+    mkdir -p $WORKON_HOME
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
+# activate envirius
+[ -f ~/.envirius/nv ] && . ~/.envirius/nv
+
+# Golang variables
+DEFAULT_USER=$USER
+export GOPATH=$HOME/projects/go-workdir
+export PATH="$PATH:$GOPATH/bin"
+export GOROOT=/usr/local/go
+
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+# FZF configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Display settings
+export FZF_DEFAULT_OPTS='--inline-info -m --height 40% --border'
+# Preview file and automatically selects the item if there's only one
+export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+# Full command on preview window"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+# uses tree command to show the entries of the directory
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+[ -f ~/.local_config ] && source ~/.local_config
