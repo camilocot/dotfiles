@@ -10,7 +10,7 @@
   lg = log -p
   pend = cherry -v origin/master
   fixup = commit --amend -C HEAD --date=""
-  #list commands
+  # list commands
   le = log --oneline --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   ls1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
@@ -34,12 +34,11 @@
   # Tags command
   lasttag = describe --tags --abbrev=0
   lt = describe --tags --abbrev=0
-
 [apply]
   whitespace = nowarn
 [core]
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor=/usr/bin/vim
+  editor=/usr/bin/nvim
   pager=most -s
   excludesfile = ~/.gitignore
 [color]
@@ -60,10 +59,13 @@
   changed = red
   untracked = cyan
 [push]
-  default = simple
+  default = tracking
 [branch]
   autosetuprebase = always
 [merge "bundle"]
   name = updates the bundle
   driver = bundle
-
+[credential]
+  helper = cache
+[pull]
+  rebase = true

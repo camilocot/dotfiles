@@ -27,10 +27,10 @@ zstyle ':completion:*' special-dirs true
 # Prevent ZSH to print an error when no match can be found.
 unsetopt nomatch
 
-source $ZSH/oh-my-zsh.sh
-
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang)
+
+source $ZSH/oh-my-zsh.sh
 
 # Path
 PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
@@ -40,14 +40,15 @@ export EDITOR='nvim'
 
 # Custom aliases
 alias vim='nvim'
+alias vimdiff="nvim -d"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias yum='dnf'
-alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
-alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
 alias vimconfig='nvim ~/.vimrc'
 alias nvimconfig='nvim ~/.config/nvim/init.vim'
 alias tmuxconfig='nvim ~/.tmux.conf'
+alias yum='dnf'
+alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;'
+alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias tcpdumpall="sudo tcpdump -nnASs 0"
 

@@ -42,3 +42,6 @@ site/src/main/javascript/site/modules/content/mapper/
 # nvim
 .netrwhist
 Session.vim
+
+# Go
+**/vendor
