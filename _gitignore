@@ -14,6 +14,7 @@
 **/.project
 **/.classpath
 **/.mvn
+.flattened-pom.xml
 
 # Jetbrains
 **/.idea
