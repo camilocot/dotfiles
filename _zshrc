@@ -101,3 +101,8 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 [ -f ~/.local_config ] && source ~/.local_config
+
+# Start tmux on every shell login
+if command -v tmux>/dev/null; then
+  [[ ! $- != *i* ]] && [ -z $TMUX ] && exec tmux
+fi
