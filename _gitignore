@@ -25,7 +25,6 @@
 
 # VS Code
 **/.vscode
-**/github.com
 .editorconfig
 
 # Vagrant
@@ -45,4 +44,3 @@ site/src/main/javascript/site/modules/content/mapper/
 Session.vim
 
 # Go
-**/vendor

@@ -54,7 +54,6 @@ if [[ ! -z $TMUX ]]; then
     source ~/.tmux-git/tmux-git.sh
 fi
 
-
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -67,7 +66,16 @@ if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
+export ANSIBLE_HOSTS=~/ansible_hosts
 export EDITOR="vim"
-export GOPATH=$HOME/projects/go-workdir
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
+# activate envirius
+[ -f "~/.envirius/nv" ] && . ~/.envirius/nv
 
+# added by Miniconda2 4.0.5 installer
+export PATH="/home/ccota/miniconda2/bin:$PATH"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "/home/ccota/.gvm/scripts/gvm" ]] && source "/home/ccota/.gvm/scripts/gvm"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
