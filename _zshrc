@@ -106,3 +106,5 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 if command -v tmux>/dev/null; then
   [[ ! $- != *i* ]] && [ -z $TMUX ] && exec tmux
 fi
+
+[ -f ~/kube-ps1/kube-ps1.sh ] && source ~/kube-ps1/kube-ps1.sh && PROMPT='$(kube_ps1)'$PROMPT
