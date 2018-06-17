@@ -30,7 +30,6 @@ unsetopt nomatch
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl)
 
-source $ZSH/oh-my-zsh.sh
 
 # Path
 PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
@@ -77,6 +76,8 @@ if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
+source $ZSH/oh-my-zsh.sh
+
 # activate envirius
 [ -f ~/.envirius/nv ] && . ~/.envirius/nv
 
@@ -104,7 +105,8 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Start tmux on every shell login
 if command -v tmux>/dev/null; then
-  [[ ! $- != *i* ]] && [ -z $TMUX ] && exec tmux
+  [[ ! $- != *i*  ]] && [ -z $TMUX ] && exec tmux attach
 fi
+
 
 [ -f ~/kube-ps1/kube-ps1.sh ] && source ~/kube-ps1/kube-ps1.sh && PROMPT='$(kube_ps1)'$PROMPT
