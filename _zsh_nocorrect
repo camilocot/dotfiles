@@ -2,3 +2,4 @@ go
 bat
 docker
 gometalinter
+kubectl
