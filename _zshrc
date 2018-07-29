@@ -28,7 +28,7 @@ zstyle ':completion:*' special-dirs true
 unsetopt nomatch
 
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl)
+plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl systemd)
 
 
 # Path
