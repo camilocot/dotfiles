@@ -28,8 +28,7 @@ zstyle ':completion:*' special-dirs true
 unsetopt nomatch
 
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl systemd kube-ps1)
-
+plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
 
 # Path
 PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
