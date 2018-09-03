@@ -1,6 +1,5 @@
 [user]
   name = Camilo Cota
-  email = camilocot@gmail.com
 [alias]
   st = status
   ci = commit
@@ -10,7 +9,7 @@
   lg = log -p
   pend = cherry -v origin/master
   fixup = commit --amend -C HEAD --date=""
-  # list commands
+  #list commands
   le = log --oneline --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   ls1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
@@ -69,3 +68,5 @@
   helper = cache
 [pull]
   rebase = true
+[commit]
+  template = ~/.gitmessage
