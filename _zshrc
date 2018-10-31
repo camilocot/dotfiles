@@ -37,6 +37,7 @@ PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/min
 export EDITOR='nvim'
 
 # Custom aliases
+alias nvim="$HOME/bin/nvim"
 alias vim='nvim'
 alias vimdiff="nvim -d"
 alias zshconfig="nvim ~/.zshrc"
@@ -104,8 +105,9 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Start tmux on every shell login
 if command -v tmux>/dev/null; then
-  [[ ! $- != *i*  ]] && [ -z $TMUX ] && exec tmux attach
+  [[ ! $- != *i*   ]] && [ -z $TMUX  ] && exec tmux attach
 fi
+
 
 PROMPT='$(kube_ps1)'$PROMPT
 
