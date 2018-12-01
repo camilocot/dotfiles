@@ -51,6 +51,7 @@ alias rmfailmvndonloads='find ~/.m2  -name "*.lastUpdated" -exec grep -q "Could 
 alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xargs -0 rm -rf'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias tcpdumpall="sudo tcpdump -nnASs 0"
+alias curl="http"
 
 # Dev Helpers functions
 karma_debug () {
@@ -141,9 +142,12 @@ PROMPT='$(custom_kube_ps1)'$ORIG_PROMPT
 # Update zsh prompt every second, K8S context can be switched in any window/buffer
 # and the prompt must be updated in any of them
 # run TRAPALRM every $TMOUT seconds
-TMOUT=1
+TMOUT=5
 
 TRAPALRM() {
-  # reset-prompt - this will update the prompt
-  zle reset-prompt
+  # https://github.com/robbyrussell/oh-my-zsh/issues/5910
+  if ! [[ $WIDGET =~ ^(up|down)-line-or-beginning-search$ ]]; then
+    # reset-prompt - this will update the prompt
+    zle reset-prompt
+  fi
 }
