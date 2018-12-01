@@ -52,6 +52,8 @@ alias rmmvnsnapshot='find ~/.m2/repository -name \*SNAPSHOT -type d -print0 | xa
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 alias tcpdumpall="sudo tcpdump -nnASs 0"
 alias curl="http"
+# Change to current mc directory, when exit to shell
+alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 
 # Dev Helpers functions
 karma_debug () {
