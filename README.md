@@ -35,3 +35,4 @@ Requirements
 - [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 - [kube-ps1](https://github.com/jonmosco/kube-ps1/)
 - [kubectx](https://github.com/ahmetb/kubectx)
+- [tmux-xpanes](https://github.com/greymd/tmux-xpanes)
