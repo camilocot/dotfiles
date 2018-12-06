@@ -1,6 +1,5 @@
 [user]
-	name = Camilo Cota
-	email = ccota@theworkshop.com
+	name = Camilo
 [alias]
   st = status
   ci = commit
