@@ -1,3 +1,7 @@
+# debug zsh startup time
+# Inject profiling code
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -28,7 +32,7 @@ zstyle ':completion:*' special-dirs true
 unsetopt nomatch
 
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git mvn virtualenvwrapper vagrant coffee python common-aliases history-substring-search.zsh z sudo nvm dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
+plugins=(git mvn vagrant coffee python common-aliases history-substring-search.zsh z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
 
 # Path
 PATH=/usr/local/go/bin:$PATH:/usr/java/latest/bin:$HOME/cmus-2.7.1/bin:$HOME/miniconda2/bin
@@ -94,22 +98,18 @@ custom_kube_ps1 () {
 
 # NVM environment
 export NVM_DIR="/home/ccota/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 # Ruby version manager
 [ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin"
+alias loadrvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"'
 
 # VirtualEnv configuration
-if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
-    export WORKON_HOME=~/Envs
-    mkdir -p $WORKON_HOME
-    source /usr/bin/virtualenvwrapper.sh
-fi
+export WORKON_HOME=~/Envs
+mkdir -p $WORKON_HOME
+alias loadve='[[ -f /usr/bin/virtualenvwrapper.sh ]] && . "/usr/bin/virtualenvwrapper.sh"'
 
 source $ZSH/oh-my-zsh.sh
-
-# activate envirius
-[ -f ~/.envirius/nv ] && . ~/.envirius/nv
 
 # Golang variables
 DEFAULT_USER=$USER
@@ -153,3 +153,6 @@ TRAPALRM() {
     zle reset-prompt
   fi
 }
+
+# display what shell was doing during initialization
+# zprof
