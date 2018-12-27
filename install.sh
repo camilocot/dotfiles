@@ -23,7 +23,7 @@ getPkgMng() {
 }
 
 installPackages() {
- 
+
     local os=$(lsb_release -si)
     local pkgs=("tmux" "python" "most" "vim" "python-pip" "most" "ipython" "jq")
     local pkgMgr=$(getPkgMng $os)
@@ -94,33 +94,5 @@ installVirtualEnvWrapper() {
     [ -d $WORKON_HOME ] || mkdir -p $WORKON_HOME
 }
 
-# We need sudo
-(( EUID != 0 )) && exec sudo -- "$0" "$@"
 
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
-USER_GROUP=$(getent group $SUDO_USER | cut -d: -f3)
-
-read -p "Please enter your email: " email
-username=${email%@*}
-
-
-
-
-checkReqs
-installPackages
-launchGitInit
 copyLinkFiles
-subVars
-read -p "Do you want to install diferent version of maven? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    installMvn
-fi
-
-read -p "Do you want to install virtual env wrapper? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    installVirtualEnvWrapper
-fi

@@ -1,0 +1,36 @@
+---
+- name: Install base packages
+  package: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - htop
+    - git
+    - python-pip
+    - python3-pip
+    - httpie
+    - curl
+    - most
+  become: true
+- name: Creates directories
+  file:
+    path: "~/{{ item }}"
+    state: directory
+  with_items:
+    - projects
+    - bin
+- name: Install base packages Ubuntu
+  package: name={{ item }} state=present
+  with_items:
+    - docker.io
+  become: true
+  when: ansible_distribution == 'Ubuntu'
+- name: add user to docker group.
+  user: name={{ ansible_env.USER }} groups=docker append=yes
+  become: true
+- name: Install kubectx
+  git: repo=https://github.com/ahmetb/kubectx.git dest=~/projects/kubectx force=yes
+- name: Create kubens link
+  file: src=~/projects/kubectx/kubens dest=~/bin/kubens state=link
+- name: Create kubectx link
+  file: src=~/projects/kubectx/kubectx dest=~/bin/kubectx state=link
+
