@@ -5,18 +5,19 @@ import testinfra.utils.ansible_runner
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
-
 def test_base_packages_installed_successfully(host):
+    packages = ["make", "htop", "git", "httpie", "curl", "most", "jq", "wireshark", "highlight", "snapd"]
+    bin_files = ["pip2", "pip3", "ruby"]
 
-    assert host.package("build-essential").is_installed
-    assert host.package("htop").is_installed
-    assert host.package("git").is_installed
-    assert host.package("python-pip").is_installed
-    assert host.package("python3-pip").is_installed
-    assert host.package("httpie").is_installed
-    assert host.package("curl").is_installed
-    assert host.package("most").is_installed
+    for package in packages:
+        assert host.package(f'{package}').is_installed
+
+    for f in bin_files:
+        assert host.file(f'/usr/bin/{f}').is_file
 
 def test_base_directories_exists(host):
-    assert host.file("/home/vagrant/projects").is_directory
-    assert host.file("/home/vagrant/bin").is_directory
+    working_dir =  host.run('cd && pwd').stdout
+    directories = ["projects", "bin"]
+
+    for directory in directories:
+        assert host.file(f'{working_dir}/{directory}').is_directory

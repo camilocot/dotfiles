@@ -34,7 +34,7 @@ passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: base, x: 42 }
+         - { role: vagrant, x: 42 }
 
 License
 -------

@@ -1,2 +1,14 @@
 ---
-# vars file for dotfiles
+pkg_list:
+  - htop
+  - git
+  - python-pip
+  - python3-pip
+  - httpie
+  - curl
+  - most
+  - jq
+  - python3-virtualenv
+  - wireshark
+  - highlight
+  - snapd

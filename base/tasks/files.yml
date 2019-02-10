@@ -1,0 +1,15 @@
+---
+- name: Copy rc config files
+  copy: src={{ item }} dest=~/.{{ item | basename }} mode=0600
+  with_fileglob:
+    - "*rc"
+- name: Copy sh files
+  copy: src={{ item }} dest=~/bin/{{ item | basename }} mode=0750
+  with_fileglob:
+    - "*.sh"
+- name: Copy git file
+  copy: src={{ item }} dest=~/.{{ item }} mode=0660 force=no
+  with_items:
+    - gitignore
+    - gitconfig
+    - gitmessage

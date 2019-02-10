@@ -1,0 +1,34 @@
+---
+- name: Install docker packages Ubuntu
+  package: name={{ item }} state=present
+  with_items:
+    - docker.io
+  become: true
+  when: ansible_distribution == 'Ubuntu'
+- name: Install dnf-plugins-core package in Fedora
+  package: name=dnf-plugins-core state=present
+  become: true
+  when: ansible_distribution == 'Fedora'
+- name: Set up docker repository in Fedora
+  command: /usr/bin/dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo warn=False
+  become: true
+  when: ansible_distribution == 'Fedora'
+- name: Install docker packages Fedora
+  package: name={{ item }} state=present
+  with_items:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+  become: true
+  when: ansible_distribution == 'Fedora'
+- name: add user to docker group.
+  user: name={{ ansible_env.USER }} groups=docker append=yes
+  become: true
+- name: reset ssh connection to allow user changes to affect 'current login user'
+  meta: reset_connection
+- name: Make sure a docker is running
+  systemd:
+    state: started
+    enabled: true
+    name: docker
+  become: true

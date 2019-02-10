@@ -6,8 +6,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 def test_kubectx_installed_successfully(host):
-    assert host.file("/home/vagrant/bin/kubectx").is_symlink
-    assert host.file("/home/vagrant/bin/kubectx").linked_to == "/home/vagrant/projects/kubectx/kubectx"
-    assert host.file("/home/vagrant/bin/kubens").is_symlink
-    assert host.file("/home/vagrant/bin/kubens").linked_to == "/home/vagrant/projects/kubectx/kubens"
+    working_dir =  host.run('cd && pwd').stdout
+
+    files = ["kubectx", "kubens"]
+
+    for f in files:
+        assert host.file(f'{working_dir}/bin/{f}').is_symlink
+        assert host.file(f'{working_dir}/bin/{f}').linked_to == f'{working_dir}/projects/kubectx/{f}'
 

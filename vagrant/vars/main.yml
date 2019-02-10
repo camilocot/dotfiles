@@ -1,0 +1,5 @@
+---
+vagrant_architecture: "{{ 'x86_64' if ansible_architecture == 'x86_64' else 'i686' }}"
+vagrant_package_ext: "{{ 'rpm' if ansible_os_family == 'RedHat' else 'deb' }}"
+vagrant_package_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ vagrant_architecture }}.{{ vagrant_package_ext }}"
+vagrant_package_tmp: "/tmp/vagrant_{{ vagrant_version }}.{{ vagrant_package_ext }}"
