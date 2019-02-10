@@ -1,0 +1,9 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install python for Ansible
+      raw: (dnf -y update && dnf install -y python2 python2-dnf libselinux-python) || (apt -y update && apt install -y python-minimal)
+      become: true
+      changed_when: false

@@ -1,0 +1,7 @@
+---
+- hosts: 127.0.0.1
+  roles:
+  - {role: base}
+  - {role: zsh}
+  - {role: tmux}
+  - {role: vagrant}

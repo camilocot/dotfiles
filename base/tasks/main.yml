@@ -1,0 +1,70 @@
+---
+- name: Install base packages for Debian base distributions
+  package: name={{ item }} state=present
+  with_items: "{{ pkg_list }}"
+  become: true
+- name: Install base packages
+  package: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - ruby-full
+    - python-virtualenv
+    - virtualenvwrapper
+  become: true
+  when: ansible_os_family == "Debian"
+- name: Install base packages for RedHat base distributions
+  yum:
+    name: ['@Development tools', 'python2-virtualenv', 'python2-virtualenvwrapper', 'python3-virtualenvwrapper', 'ruby-devel']
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+- name: Creates directories
+  file:
+    path: "~/{{ item }}"
+    state: directory
+  with_items:
+    - projects
+    - bin
+- include: docker.yml
+- include: files.yml
+- name: Install kubectx
+  git: repo=https://github.com/ahmetb/kubectx.git dest=~/projects/kubectx force=yes
+- name: Create kubens link
+  file: src=~/projects/kubectx/kubens dest=~/bin/kubens state=link
+- name: Create kubectx link
+  file: src=~/projects/kubectx/kubectx dest=~/bin/kubectx state=link
+- name: Install ktail
+  get_url:
+    url: https://github.com/atombender/ktail/releases/download/v0.7.0/ktail-linux-amd64
+    dest: /usr/local/bin/ktail
+    mode: 0755
+  become: true
+- name: Enable snapd socket
+  systemd:
+    name: snapd.socket
+    enabled: true
+  when: ansible_distribution == "Fedora"
+  tags: ["snapd"]
+- name: Install kernel-modules to get squashfs driver in Fedora
+  dnf:
+    name: kernel-modules
+    state: present
+  when: ansible_distribution == "Fedora"
+  become: true
+  tags: ["snapd"]
+- name: Install microk8s
+  command: snap install microk8s --classic
+  become: true
+  tags: ["snapd"]
+- name: Install snap
+  command: snap install spotify
+  become: true
+  tags: ["snapd"]
+- name: Install
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+  when: ansible_distribution == "Fedora"
+  become: true
+  tags: ["snapd"]
