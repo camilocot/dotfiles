@@ -14,3 +14,6 @@
   git: repo=https://github.com/tmux-plugins/tpm dest=~/.tmux/plugins/tpm force=yes
 - name: Install plugins
   shell: ~/.tmux/plugins/tpm/bin/install_plugins
+  environment:
+    TMUX_PLUGIN_MANAGER_PATH: ~/.tmux/plugins/
+
