@@ -1,4 +1,8 @@
 ---
+- name: get username
+  become: false
+  local_action: command whoami
+  register: username_on_the_host
 - name: Install zsh
   package:
     name=zsh
@@ -19,4 +23,5 @@
   command: which zsh
   register: zsh_path
 - name: Switch to zsh
-  command: chsh -s {{ zsh_path.stdout }}
+  command: chsh -s {{ zsh_path.stdout }} {{ username_on_the_host.stdout }}
+  become: yes
