@@ -14,7 +14,8 @@ Install
 --------------
 
 ```
-ansible-playbook playbook.yml -vvv --connection=local --ask-sudo-pass
+ansible-galaxy install -r requirements.yaml
+ansible-playbook playbook.yml -vvv --connection=local --ask-become-pass
 ```
 
 Test
@@ -23,7 +24,7 @@ Test
 ```
 # There is a known issue Known with virtualenv and ansible on SELinux-enabled hosts, the workarround is to create the virtualenv with system packages enabled:
 mkvirtualenv --system-site-packages molecule -p `which python3`
-pip install < requirements.txt
+pip install -r requirements.txt
 
 for role in $(ls -d ./*/)
 do
