@@ -99,6 +99,9 @@ alias loadnvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 [ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin"
 alias loadrvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"'
 
+# VirtualEnv
+alias loadve='[[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh  ]] && . /usr/share/virtualenvwrapper/virtualenvwrapper.sh'
+
 # VirtualEnv configuration
 export WORKON_HOME=~/Envs
 mkdir -p $WORKON_HOME
