@@ -5,3 +5,4 @@
   - {role: zsh}
   - {role: tmux}
   - {role: vagrant}
+  - {role: vscode}
