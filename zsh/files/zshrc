@@ -148,5 +148,8 @@ TRAPALRM() {
   fi
 }
 
+# pythonrc with autocompletion
+export PYTHONSTARTUP=~/.pythonrc
+
 # display what shell was doing during initialization
 # zprof

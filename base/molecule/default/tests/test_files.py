@@ -7,7 +7,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_base_files_exist(host):
     working_dir =  host.run('cd && pwd').stdout
-    files = [".digrc", ".netrc", ".curlrc", ".inputrc"]
+    files = [".digrc", ".netrc", ".curlrc", ".inputrc", ".pythonrc"]
     git_files = [".gitignore", ".gitconfig", ".gitmessage"]
     scripts = ["docker-rmstop-all.sh", "machine-diskutil.sh", "swap-usage.sh"]
 
