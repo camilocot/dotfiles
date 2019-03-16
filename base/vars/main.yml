@@ -12,3 +12,6 @@ pkg_list:
   - wireshark
   - highlight
   - snapd
+  - socat
+  - ngrep
+  - mtr

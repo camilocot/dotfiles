@@ -6,7 +6,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 def test_base_packages_installed_successfully(host):
-    packages = ["make", "htop", "git", "httpie", "curl", "most", "jq", "wireshark", "highlight", "snapd"]
+    packages = ["make", "htop", "git", "httpie", "curl", "most", "jq", "wireshark", "highlight", "snapd", "socat", "mtr", "socat", "ngrep"]
     bin_files = ["pip2", "pip3", "ruby"]
 
     for package in packages:
