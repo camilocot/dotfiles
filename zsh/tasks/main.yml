@@ -14,9 +14,7 @@
 - name: Back up existing ~/.zshrc
   shell: if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc.bak ; fi
 - name: Copy my .zshrc
-  copy: src=zshrc dest=~/.oh-my-zsh/templates/zshrc.zsh-template
-- name: Creating new ~/.zshrc
-  file: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc state=link
+  copy: src=zshrc dest=~/.zshrc
 - name: Copy my .zsh_nocorrect
   copy: src=zsh_nocorrect dest=~/.zsh_nocorrect
 - name: Get zsh path

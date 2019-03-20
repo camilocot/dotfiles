@@ -18,5 +18,3 @@ def test_oh_my_shell_is_installed_successfully(host):
     for f in files:
         assert host.file(f'{working_dir}/{f}').exists
 
-    assert host.file(f'{working_dir}/.zshrc').linked_to == f'{working_dir}/.oh-my-zsh/templates/zshrc.zsh-template'
-
