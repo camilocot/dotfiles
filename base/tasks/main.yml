@@ -10,11 +10,12 @@
     - ruby-full
     - python-virtualenv
     - virtualenvwrapper
+    - python-notebook
   become: true
   when: ansible_os_family == "Debian"
 - name: Install base packages for RedHat base distributions
   yum:
-    name: ['@Development tools', 'python2-virtualenv', 'python2-virtualenvwrapper', 'python3-virtualenvwrapper', 'ruby-devel']
+    name: ['@Development tools', 'python2-virtualenv', 'python2-virtualenvwrapper', 'python3-virtualenvwrapper', 'ruby-devel', 'notebook']
     state: present
   become: true
   when: ansible_os_family == "RedHat"

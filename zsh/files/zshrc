@@ -32,7 +32,7 @@ zstyle ':completion:*' special-dirs true
 unsetopt nomatch
 
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git mvn vagrant coffee python common-aliases history-substring-search.zsh z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
+plugins=(git mvn vagrant coffee python common-aliases z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
