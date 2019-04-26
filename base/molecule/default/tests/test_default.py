@@ -8,6 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_set_selinux_permissive_successfully(host):
-    sestatus_ran = host.run("sestatus")
+    if host.system_info.distribution == "fedora":
+        sestatus_ran = host.run("sestatus")
 
-    assert  len(re.findall(r'^Current mode:\s+permissive$', sestatus_ran.stdout, flags=re.MULTILINE)) == 1
+        assert  len(re.findall(r'^Current mode:\s+permissive$', sestatus_ran.stdout, flags=re.MULTILINE)) == 1

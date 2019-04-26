@@ -67,7 +67,8 @@
   become: true
   tags: ["snapd"]
 # Put SELinux in permissive mode, microk8s wont work
-- selinux:
+- name: Disable Selinux
+  selinux:
     policy: targeted
     state: permissive
   when: ansible_distribution == "Fedora"
