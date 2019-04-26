@@ -12,6 +12,7 @@ platforms:
     image: ubuntu:18.10
 provisioner:
   name: ansible
+  log: true
   lint:
     name: ansible-lint
 scenario:
@@ -24,7 +25,7 @@ scenario:
     - create
     - prepare
     - converge
-    - idempotence
+    # - idempotence
     - side_effect
     - verify
     - destroy

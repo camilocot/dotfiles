@@ -1,7 +1,7 @@
 ---
 - name: get username
   become: false
-  local_action: command whoami
+  command: whoami
   register: username_on_the_host
 - name: Install zsh
   package:

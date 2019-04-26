@@ -32,7 +32,7 @@ zstyle ':completion:*' special-dirs true
 unsetopt nomatch
 
 # Enabled plugins (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git mvn vagrant coffee python common-aliases z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie)
+plugins=(git mvn vagrant coffee python common-aliases z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie tmux)
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
@@ -148,7 +148,8 @@ TRAPALRM() {
   if ! [[ $WIDGET =~ ^(up|down)-line-or-beginning-search$ || $WIDGET == "fzf"* ]]; then
     # reset-prompt - this will update the prompt
     zle reset-prompt
-  fi
+  fi: ${ZSH_TMUX_AUTOSTART:=false}
+
 }
 
 # pythonrc with autocompletion

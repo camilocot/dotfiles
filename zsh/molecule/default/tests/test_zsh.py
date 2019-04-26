@@ -18,3 +18,6 @@ def test_oh_my_shell_is_installed_successfully(host):
     for f in files:
         assert host.file(f'{working_dir}/{f}').exists
 
+def test_oh_my_shell_plugins_enabled(host):
+    working_dir = host.run("cd && pwd").stdout
+    assert host.file(f'{working_dir}/.zshrc').contains("git mvn vagrant coffee python common-aliases z sudo dirhistory docker jira web-search golang kubectl systemd kube-ps1 colorize dnf httpie tmux")
