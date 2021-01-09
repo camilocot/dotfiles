@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # Golang variables
 DEFAULT_USER=$USER
 export GOPATH=$HOME/projects/go-workdir
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:${HOME}/.krew/bin:/usr/share/bcc/tools"
 export GOROOT=/usr/local/go
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
@@ -138,7 +138,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # fi
 
 ORIG_PROMPT=$PROMPT
-PROMPT='$(custom_kube_ps1)'$ORIG_PROMPT
+PROMPT='$(custom_kube_ps1)$(tf_prompt_info) '$ORIG_PROMPT
 
 # Update zsh prompt every second, K8S context can be switched in any window/buffer
 # and the prompt must be updated in any of them
@@ -156,6 +156,30 @@ TRAPALRM() {
 
 # pythonrc with autocompletion
 export PYTHONSTARTUP=~/.pythonrc
+
+alias tf=terraform
+alias tfw="terraform workspace"
+
+# Terraform
+
+tfv(){
+  terraform validate -var-file=env/$(terraform workspace show).tfvars
+}
+
+tfp(){
+  terraform plan -var-file=env/$(terraform workspace show).tfvars
+}
+
+tfa(){
+  terraform apply -var-file=env/$(terraform workspace show).tfvars
+}
+
+tfc(){
+  terraform console -var-file=env/$(terraform workspace show).tfvars
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/camilo/google-cloud-sdk/path.zsh.inc' ]; then . '/home/camilo/google-cloud-sdk/path.zsh.inc'; fi
 
 # display what shell was doing during initialization
 # zprof

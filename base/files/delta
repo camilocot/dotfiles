@@ -1,0 +1,2 @@
+#!/bin/bash
+exec delta --commit-style box --commit-color="red" --theme 'base16' "$@"
